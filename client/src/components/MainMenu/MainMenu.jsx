@@ -11,6 +11,7 @@ function MainMenu() {
             <div className='mainMenuBox'>
                 <div className='mainMenu'>
                     <h1 className='tiny5-regular not-editable-text titleText'>DUNGEON MAN</h1>
+                    <h2 className='tiny5-regular not-editable-text subTitleText'>ダンジョンマン</h2>
                     <button className='tiny5-regular newGameButton'>NEW</button>
                     <button className='tiny5-regular continueButton'>CONTINUE</button>
                 </div>

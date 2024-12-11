@@ -2,20 +2,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
+    height: 750px;
+    width: 1200px;
+    border: solid white 2px;
     /* background-color: blue; */
 }
 
 .mainMenu {
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .titleText {
     font-size: 55px;
-    margin-bottom: 20px;
     border-bottom: solid white 2px;
+}
+
+.subTitleText {
+    font-size: 35px;
+    margin-bottom: 20px;
 }
 
 .newGameButton {
