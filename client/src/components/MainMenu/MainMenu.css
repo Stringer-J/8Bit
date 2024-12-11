@@ -1,0 +1,46 @@
+.mainMenuBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    /* background-color: blue; */
+}
+
+.mainMenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.titleText {
+    font-size: 55px;
+    margin-bottom: 20px;
+    border-bottom: solid white 2px;
+}
+
+.newGameButton {
+    background-color: black;
+    border: none;
+    height: 50px;
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+  
+  .newGameButton:hover {
+    color: antiquewhite;
+    cursor: pointer;
+    border: solid antiquewhite 1px;
+  }
+  
+  .continueButton {
+    background-color: black;
+    border: none;
+    height: 50px;
+    font-size: 25px;
+  }
+  
+  .continueButton:hover {
+    color: antiquewhite;
+    cursor: pointer;
+    border: solid antiquewhite 1px;
+  }
