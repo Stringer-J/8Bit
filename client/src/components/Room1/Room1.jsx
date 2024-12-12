@@ -10,16 +10,19 @@ function Room1() {
 
         switch (event.key) {
             case 'w':
-                newTop -= 10;
+                newTop -= 100;
                 break;
             case 'a':
-                newLeft -= 10;
+                newLeft -= 100;
                 break;
             case 's':
-                newTop += 10;
+                newTop += 100;
                 break;
             case 'd':
-                newLeft += 10;
+                newLeft += 100;
+                break;
+            case ' ':
+                alert('There is nothing here...');
                 break;
             default:
                 break;
