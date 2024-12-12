@@ -1,0 +1,9 @@
+.room1Box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 750px;
+    width: 1200px;
+    border: solid white 2px;
+    /* background-color: blue; */
+}
