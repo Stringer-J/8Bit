@@ -12,14 +12,31 @@
 }
 
 .character-info {
-    background-color: white;
+    background-color: black;
+    color: white;
     padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    width: 100%;
+    border: 1px solid white;
+    height: 300px;
+    width: 300px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-button {
-    margin-top: 20px;
-}
+.menuButton {
+    background-color: black;
+    border: none;
+    height: 50px;
+    width: 300px;
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+
+.menuButton:hover {
+    color: antiquewhite;
+    cursor: pointer;
+    border: solid antiquewhite 1px;
+  }
+  
