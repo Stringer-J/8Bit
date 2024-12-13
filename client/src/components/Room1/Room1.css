@@ -1,9 +1,26 @@
 .room1Box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 750px;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+    height: 800px;
     width: 1200px;
     border: solid white 2px;
-    /* background-color: blue; */
+}
+
+.square {
+    border: 1px solid white;
+    width: 100%;
+    height: 100%;
+}
+
+.center img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 7%;
+    height: 7%;
+    object-fit: contain;
 }

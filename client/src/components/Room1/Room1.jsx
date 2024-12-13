@@ -2,42 +2,7 @@ import { useState, useEffect } from 'react';
 import './Room1.css';
 
 function Room1() {
-    const [dMPosition, setDMPosition] = useState({ top: 10, left: 0 });
-
-    const handleKeyDown = (event) => {
-        let newTop = dMPosition.top;
-        let newLeft = dMPosition.left;
-
-        switch (event.key) {
-            case 'w':
-                newTop -= 100;
-                break;
-            case 'a':
-                newLeft -= 100;
-                break;
-            case 's':
-                newTop += 100;
-                break;
-            case 'd':
-                newLeft += 100;
-                break;
-            case ' ':
-                alert('There is nothing here...');
-                break;
-            default:
-                break;
-        }
-
-        setDMPosition({ top: newTop, left: newLeft });
-    };
-
-    useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown);
-
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [dMPosition]);
+    const squares = new Array(120).fill(null);
 
     return (
         <>
@@ -45,14 +10,12 @@ function Room1() {
                 <source src="/Room1.wav" type="audio/wav" />
             </audio>
 
-            <div className='room1Box' style={{ position: 'relative' }}>
-                <img src='/DungeonMan.png'
-                     alt='DungeonMan'
-                     style={{
-                        position: 'absolute',
-                        top: `${dMPosition.top}px`,
-                        left: `${dMPosition.left}px`
-                     }}></img>
+            <div className='room1Box'>
+                {squares.map((_, index) => (
+                    <div key={index} className={`square ${index === 60 ? 'center' : ''}`}>
+                        {index === 60 && <img src='/DungeonMan.png' alt='DungeonMan' />}
+                    </div>
+                ))}
             </div>
         </>
     )
