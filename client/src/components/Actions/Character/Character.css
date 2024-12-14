@@ -28,6 +28,15 @@
 .character-stats {
     border-bottom: 1px solid white;
     height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center
+}
+
+.character-stats img {
+    height: 50px;
+    width: 50px;
 }
 
 .character-equipped {

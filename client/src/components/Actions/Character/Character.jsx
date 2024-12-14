@@ -42,9 +42,10 @@ function Character({ onClose }) {
                     <p>STATS</p><hr></hr>
                 </div>
                 <div className='character-stats tiny5-regular'>
-                    <p>HP: 5</p>
-                    <p>AT: 1</p>
-                    <p>DF: 0</p>
+                    <img src='/HPIcon.png'></img><p>HP 10</p>
+                    <img src='/MPIcon.png'></img><p>MP 5</p>
+                    <img src='/ATIcon.png'></img><p>AT 1</p>
+                    <img src='/DFIcon.png'></img><p>DF 0</p>
                 </div>
                 <div className='character-title tiny5-regular'>
                     <p>EQUIPMENT</p>
