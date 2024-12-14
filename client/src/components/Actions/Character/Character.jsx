@@ -9,6 +9,7 @@ function Character({ onClose }) {
     const [equippedHoveredSquare, setEquippedHoveredSquare] = useState(null);
     const [inventoryHoveredSquare, setInventoryHoveredSquare] = useState(null);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0});
+    const [hoveredImage, setHoveredImage] = useState(null);
 
     const handleMouseEnterEquipped = (e, index) => {
         setEquippedHoveredSquare(index);
@@ -22,6 +23,12 @@ function Character({ onClose }) {
         setMousePosition({ x: clientX, y: clientY });
     }
 
+    const handleMouseEnterImage = (e, imageName) => {
+        setHoveredImage(imageName);
+        const { clientX, clientY } = e;
+        setMousePosition({ x: clientX, y: clientY });
+    }
+
     const handleMouseMove = (e) => {
         const { clientX, clientY } = e;
         setMousePosition({ x: clientX, y: clientY });
@@ -30,6 +37,7 @@ function Character({ onClose }) {
     const handleMouseLeave = () => {
         setEquippedHoveredSquare(null);
         setInventoryHoveredSquare(null);
+        setHoveredImage(null);
     };
 
     return (
@@ -42,10 +50,94 @@ function Character({ onClose }) {
                     <p>STATS</p><hr></hr>
                 </div>
                 <div className='character-stats tiny5-regular'>
-                    <img src='/HPIcon.png'></img><p>HP 10</p>
-                    <img src='/MPIcon.png'></img><p>MP 5</p>
-                    <img src='/ATIcon.png'></img><p>AT 1</p>
-                    <img src='/DFIcon.png'></img><p>DF 0</p>
+                    <div
+                        className='stat-image'
+                        onMouseEnter={(e) => handleMouseEnterImage(e, 'HP')}
+                        onMouseMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <img src='/HPIcon.png' alt='HP Icon'></img>
+                        <p>HP: 10</p>
+                        {hoveredImage === 'HP' && (
+                            <div
+                                className='tooltip'
+                                style={{
+                                    position: 'absolute',
+                                    left: mousePosition.x + 35 + 'px',
+                                    top: mousePosition.y + 35 + 'px',
+                                }}
+                            >
+                                Health remaining. Lose it all and your dead.
+                            </div>
+                        )}
+                    </div>
+
+                    <div
+                        className='stat-image'
+                        onMouseEnter={(e) => handleMouseEnterImage(e, 'MP')}
+                        onMouseMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <img src='/MPIcon.png' alt='MP Icon'></img>
+                        <p>MP: 5</p>
+                        {hoveredImage === 'MP' && (
+                            <div
+                                className='tooltip'
+                                style={{
+                                    position: 'absolute',
+                                    left: mousePosition.x + 35 + 'px',
+                                    top: mousePosition.y + 35 + 'px',
+                                }}
+                            >
+                                Mana required for casting magic.
+                            </div>
+                        )}
+                    </div>
+
+                    <div
+                        className='stat-image'
+                        onMouseEnter={(e) => handleMouseEnterImage(e, 'AT')}
+                        onMouseMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <img src='/ATIcon.png' alt='AT Icon'></img>
+                        <p>AT: 1</p>
+                        {hoveredImage === 'AT' && (
+                            <div
+                                className='tooltip'
+                                style={{
+                                    position: 'absolute',
+                                    left: mousePosition.x + 35 + 'px',
+                                    top: mousePosition.y + 35 + 'px',
+                                }}
+                            >
+                                Amount of raw damage you can deal.
+                            </div>
+                        )}
+                    </div>
+
+                    <div
+                        className='stat-image'
+                        onMouseEnter={(e) => handleMouseEnterImage(e, 'DF')}
+                        onMouseMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <img src='/DFIcon.png' alt='DF Icon'></img>
+                        <p>DF: 0</p>
+                        {hoveredImage === 'DF' && (
+                            <div
+                                className='tooltip'
+                                style={{
+                                    position: 'absolute',
+                                    left: mousePosition.x + 35 + 'px',
+                                    top: mousePosition.y + 35 + 'px',
+                                }}
+                            >
+                                Reduces damage from enemy attacks or physical traps.
+                            </div>
+                        )}
+                    </div>
+
                 </div>
                 <div className='character-title tiny5-regular'>
                     <p>EQUIPMENT</p>
