@@ -14,14 +14,10 @@
 .character-info {
     background-color: black;
     color: white;
-    border: 1px solid white;
-    height: 700px;
+    border: 5px solid white;
+    height: 483px;
     width: 400px;
     text-align: center;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; */
 }
 
 .character-header {
@@ -54,17 +50,26 @@
 }
 
 .inventory-square {
-    height: 75px;
+    height: 74px;
     border: 1px solid white;
+}
+
+.tooltip {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border: 1px solid white;
+    font-size: 15px;
+    pointer-events: none;  /* Prevent the tooltip from interfering with mouse events */
 }
 
 .menuButton {
     background-color: black;
     border: none;
-    height: 50px;
+    height: 40px;
     width: 300px;
     font-size: 25px;
-    margin-bottom: 5px;
+    margin-top: 5px;
   }
 
 .menuButton:hover {

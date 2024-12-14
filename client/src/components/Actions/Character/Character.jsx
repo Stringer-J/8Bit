@@ -1,9 +1,36 @@
 import './Character.css';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 function Character({ onClose }) {
     const equippedSquares = new Array(3).fill(null);
     const inventorySquares = new Array(12).fill(null);
+
+    const [equippedHoveredSquare, setEquippedHoveredSquare] = useState(null);
+    const [inventoryHoveredSquare, setInventoryHoveredSquare] = useState(null);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0});
+
+    const handleMouseEnterEquipped = (e, index) => {
+        setEquippedHoveredSquare(index);
+        const { clientX, clientY } = e;
+        setMousePosition({ x: clientX, y: clientY });
+    };
+
+    const handleMouseEnterInventory = (e, index) => {
+        setInventoryHoveredSquare(index);
+        const { clientX, clientY } = e;
+        setMousePosition({ x: clientX, y: clientY });
+    }
+
+    const handleMouseMove = (e) => {
+        const { clientX, clientY } = e;
+        setMousePosition({ x: clientX, y: clientY });
+    };
+
+    const handleMouseLeave = () => {
+        setEquippedHoveredSquare(null);
+        setInventoryHoveredSquare(null);
+    };
 
     return (
         <div className='character-overlay' onClick={onClose}>
@@ -24,7 +51,25 @@ function Character({ onClose }) {
                 </div>
                 <div className='character-equipped'>
                     {equippedSquares.map((_, index) => (
-                        <div key={index} className='equipped-square'></div>
+                        <div key={index} 
+                             className='equipped-square'
+                             onMouseEnter={(e) => handleMouseEnterEquipped(e, index)}
+                             onMouseMove={handleMouseMove}
+                             onMouseLeave={handleMouseLeave}
+                        >
+                             {equippedHoveredSquare === index && (
+                                <div
+                                    className='tooltip tiny5-regular'
+                                    style={{
+                                        position: 'absolute',
+                                        left: mousePosition.x + 20 + 'px',
+                                        top: mousePosition.y + 20 + 'px',
+                                    }}
+                                >
+                                    Empty
+                                </div>
+                             )}
+                        </div>
                     ))}
                 </div>
                 <div className='character-title tiny5-regular'>
@@ -32,10 +77,27 @@ function Character({ onClose }) {
                 </div>
                 <div className='character-inventory'>
                     {inventorySquares.map((_, index) => (
-                        <div key={index} className='inventory-square'></div>
+                        <div key={index} 
+                             className='inventory-square'
+                             onMouseEnter={(e) => handleMouseEnterInventory(e, index)}
+                             onMouseMove={handleMouseMove}
+                             onMouseLeave={handleMouseLeave}>
+
+                             {inventoryHoveredSquare === index && (
+                                <div
+                                    className='tooltip tiny5-regular'
+                                    style={{
+                                        position: 'absolute',
+                                        left: mousePosition.x + 20 + 'px',
+                                        top: mousePosition.y + 20 + 'px',
+                                    }}
+                                >
+                                    Empty
+                                </div>
+                             )}
+                        </div>
                     ))}
                 </div>
-                <button className='tiny5-regular menuButton' onClick={onClose}>CLOSE</button>
             </div>
         </div>
     )
