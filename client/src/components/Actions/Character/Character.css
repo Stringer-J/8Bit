@@ -14,7 +14,7 @@
 .character-info {
     background-color: black;
     color: white;
-    border: 5px solid white;
+    border: 5px solid antiquewhite;
     height: 483px;
     width: 400px;
     text-align: center;
@@ -56,9 +56,9 @@
 
 .tooltip {
     background-color: black;
-    color: white;
+    color: antiquewhite;
     padding: 5px;
-    border: 1px solid white;
+    border: 1px solid antiquewhite;
     font-size: 15px;
     pointer-events: none;  /* Prevent the tooltip from interfering with mouse events */
 }

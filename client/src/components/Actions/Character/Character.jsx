@@ -62,8 +62,8 @@ function Character({ onClose }) {
                                     className='tooltip tiny5-regular'
                                     style={{
                                         position: 'absolute',
-                                        left: mousePosition.x + 20 + 'px',
-                                        top: mousePosition.y + 20 + 'px',
+                                        left: mousePosition.x + 35 + 'px',
+                                        top: mousePosition.y + 35 + 'px',
                                     }}
                                 >
                                     Empty
@@ -88,8 +88,8 @@ function Character({ onClose }) {
                                     className='tooltip tiny5-regular'
                                     style={{
                                         position: 'absolute',
-                                        left: mousePosition.x + 20 + 'px',
-                                        top: mousePosition.y + 20 + 'px',
+                                        left: mousePosition.x + 35 + 'px',
+                                        top: mousePosition.y + 35 + 'px',
                                     }}
                                 >
                                     Empty

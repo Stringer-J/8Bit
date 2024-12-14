@@ -18,8 +18,9 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
-.not-editable-text {
-  cursor: default;
+* {
+  cursor: url('/PixelCursor.png'), auto !important;
 }
