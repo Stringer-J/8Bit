@@ -14,15 +14,48 @@
 .character-info {
     background-color: black;
     color: white;
-    padding: 20px;
     border: 1px solid white;
-    height: 300px;
-    width: 300px;
+    height: 700px;
+    width: 400px;
     text-align: center;
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column; */
+}
+
+.character-header {
+    border-bottom: 1px solid white;
+    height: 100px;
+}
+
+.character-stats {
+    border-bottom: 1px solid white;
+    height: 100px;
+}
+
+.character-equipped {
+    border-bottom: 1px solid white;
+    height: 75px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.equipped-square {
+    height: 75px;
+    border: 1px solid white;
+}
+
+.character-inventory {
+    border-bottom: 1px solid white;
+    height: 150px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.inventory-square {
+    height: 75px;
+    border: 1px solid white;
 }
 
 .menuButton {

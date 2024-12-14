@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './Room1.css';
 import CharacterPage from '../Actions/Character/Character.jsx';
 
