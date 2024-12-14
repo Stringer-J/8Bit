@@ -56,7 +56,7 @@ function Character({ onClose }) {
         <div className='character-overlay' onClick={onClose}>
             <div className='character-info' onClick={(e) => e.stopPropagation()}>
                 <div className='character-header tiny5-regular'>
-                    Dungeon Man LV. 1
+                    Dungeon Man
                 </div>
                 <div className='character-title tiny5-regular'>
                     <p>STATS</p><hr></hr>
