@@ -1,39 +1,51 @@
 import './Character.css';
+//let's me use onClose
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 function Character({ onClose }) {
+    //array for equipment squares
     const equippedSquares = new Array(3).fill(null);
+    //array for inventory squares
     const inventorySquares = new Array(12).fill(null);
 
+    //state for hover tooltip on equip squares
     const [equippedHoveredSquare, setEquippedHoveredSquare] = useState(null);
+    //state for hover tooltip on inventory squares
     const [inventoryHoveredSquare, setInventoryHoveredSquare] = useState(null);
+    //state to determine mouse position
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0});
+    //state for tooltip on images
     const [hoveredImage, setHoveredImage] = useState(null);
 
+    //code for what happens when the cursor enters an equip square
     const handleMouseEnterEquipped = (e, index) => {
         setEquippedHoveredSquare(index);
         const { clientX, clientY } = e;
         setMousePosition({ x: clientX, y: clientY });
     };
 
+    //code for what happens when the cursor enters an inventory square
     const handleMouseEnterInventory = (e, index) => {
         setInventoryHoveredSquare(index);
         const { clientX, clientY } = e;
         setMousePosition({ x: clientX, y: clientY });
     }
 
+    //code for what happens when the cursor is over an image
     const handleMouseEnterImage = (e, imageName) => {
         setHoveredImage(imageName);
         const { clientX, clientY } = e;
         setMousePosition({ x: clientX, y: clientY });
     }
 
+    //code for knowing the position of the mouse while it is over something
     const handleMouseMove = (e) => {
         const { clientX, clientY } = e;
         setMousePosition({ x: clientX, y: clientY });
     };
 
+    //code for what happens when the mouse stops hovering over something
     const handleMouseLeave = () => {
         setEquippedHoveredSquare(null);
         setInventoryHoveredSquare(null);
@@ -50,6 +62,7 @@ function Character({ onClose }) {
                     <p>STATS</p><hr></hr>
                 </div>
                 <div className='character-stats tiny5-regular'>
+                    {/* code for handling the tooltip when hovering over the HP icon */}
                     <div
                         className='stat-image'
                         onMouseEnter={(e) => handleMouseEnterImage(e, 'HP')}
@@ -57,7 +70,7 @@ function Character({ onClose }) {
                         onMouseLeave={handleMouseLeave}
                     >
                         <img src='/HPIcon.png' alt='HP Icon'></img>
-                        <p>HP: 10</p>
+                        <p>HP: 10/10</p>
                         {hoveredImage === 'HP' && (
                             <div
                                 className='tooltip'
@@ -72,6 +85,7 @@ function Character({ onClose }) {
                         )}
                     </div>
 
+                    {/* code for handling the tooltip when hovering over the MP icon */}
                     <div
                         className='stat-image'
                         onMouseEnter={(e) => handleMouseEnterImage(e, 'MP')}
@@ -79,7 +93,7 @@ function Character({ onClose }) {
                         onMouseLeave={handleMouseLeave}
                     >
                         <img src='/MPIcon.png' alt='MP Icon'></img>
-                        <p>MP: 5</p>
+                        <p>MP: 5/5</p>
                         {hoveredImage === 'MP' && (
                             <div
                                 className='tooltip'
@@ -94,6 +108,7 @@ function Character({ onClose }) {
                         )}
                     </div>
 
+                    {/* code for handling the tooltip when hovering over the AT icon */}
                     <div
                         className='stat-image'
                         onMouseEnter={(e) => handleMouseEnterImage(e, 'AT')}
@@ -116,6 +131,7 @@ function Character({ onClose }) {
                         )}
                     </div>
 
+                    {/* code for handling the tooltip when hovering over the DF icon */}
                     <div
                         className='stat-image'
                         onMouseEnter={(e) => handleMouseEnterImage(e, 'DF')}
@@ -142,6 +158,8 @@ function Character({ onClose }) {
                 <div className='character-title tiny5-regular'>
                     <p>EQUIPMENT</p>
                 </div>
+
+                {/* code for handling the tooltip when hovering over an equipment square */}
                 <div className='character-equipped'>
                     {equippedSquares.map((_, index) => (
                         <div key={index} 
@@ -168,6 +186,8 @@ function Character({ onClose }) {
                 <div className='character-title tiny5-regular'>
                     <p>INVENTORY</p>
                 </div>
+
+                {/* code for handling the tooltip when hovering over an inventory square */}
                 <div className='character-inventory'>
                     {inventorySquares.map((_, index) => (
                         <div key={index} 
@@ -196,6 +216,7 @@ function Character({ onClose }) {
     )
 }
 
+//allows the use of onClose
 Character.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
