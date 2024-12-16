@@ -14,11 +14,20 @@
     box-sizing: border-box;
 }
 
+.map-tile-image {
+    object-fit: cover; /* Ensures the image covers the square without distortion */
+    width: 100%;       /* Takes up the full width of the square */
+    height: 100%;      /* Takes up the full height of the square */
+    position: absolute; /* Ensures the image stays within the bounds of the square */
+    top: 0;
+    left: 0;
+}
+
 .square:hover {
     border: 1px solid white;
 }
 
-.room1Box img {
+.dungeon-man {
     position: absolute;
     top: 0;
     left: 0;
@@ -28,4 +37,6 @@
     width: 60px;
     height: 60px;
     object-fit: contain;
+    z-index: 1000;
 }
+
