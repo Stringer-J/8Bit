@@ -55,12 +55,15 @@ function Character({ onClose }) {
     return (
         <div className='character-overlay' onClick={onClose}>
             <div className='character-info' onClick={(e) => e.stopPropagation()}>
+
                 <div className='character-header tiny5-regular'>
-                    Dungeon Man
+                    DUNGEON MAN
                 </div>
+
                 <div className='character-title tiny5-regular'>
-                    <p>STATS</p><hr></hr>
+                    STATS<hr></hr>
                 </div>
+
                 <div className='character-stats tiny5-regular'>
                     {/* code for handling the tooltip when hovering over the HP icon */}
                     <div
@@ -155,8 +158,9 @@ function Character({ onClose }) {
                     </div>
 
                 </div>
+
                 <div className='character-title tiny5-regular'>
-                    <p>EQUIPMENT</p>
+                    EQUIPMENT
                 </div>
 
                 {/* code for handling the tooltip when hovering over an equipment square */}
@@ -183,8 +187,9 @@ function Character({ onClose }) {
                         </div>
                     ))}
                 </div>
+
                 <div className='character-title tiny5-regular'>
-                    <p>INVENTORY</p>
+                    INVENTORY
                 </div>
 
                 {/* code for handling the tooltip when hovering over an inventory square */}
