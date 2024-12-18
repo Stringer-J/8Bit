@@ -6,15 +6,19 @@ function Room1() {
     //array for squares on the game map
     const squares = new Array(121).fill(null);
 
+    //finds map tile images and the number of times i want them to appear
     const mapTilePaths = [
         { img: '/map-tiles/NormalFloor.png', count: 110 },
         { img: '/map-tiles/PoisonFloor.png', count: 6 },
         { img: '/map-tiles/SpikeTrap.png', count: 5 }
     ];
 
+    //makes state for squareTiles an empty array
     const [squareTiles, setSquareTiles] = useState([]);
 
+    //makes state for where squid guys appear as an empty array
     const [squidGuyIndexes, setSquidGuyIndexes] = useState([]);
+    //makes state for where treasure chests appear as an empty array
     const [treasureChestIndexes, setTreasureChestIndexes] = useState([]);
 
     //state for determining what square Dungeon Man is located in
@@ -22,6 +26,7 @@ function Room1() {
     //state for determining if the character page is open or not
     const [isCharacterPageOpen, setIsCharacterPageOpen] = useState(false);
 
+    //code for rendering map tiles
     const assignMapTiles = () => {
         let assignedTiles = [];
 
@@ -43,6 +48,7 @@ function Room1() {
         setSquareTiles(assignedTiles);
     };
 
+    //code for rendering squid guys
     const assignSquidGuys = () => {
         let normalFloorIndexes = [];
         squareTiles.forEach((tile, index) => {
@@ -66,6 +72,7 @@ function Room1() {
         setSquidGuyIndexes(squidGuyPositions);
     };
 
+    //code for rendering treasure chests
     const assignTreasureChests = () => {
         let normalFloorIndexes = [];
         squareTiles.forEach((tile, index) => {
@@ -91,16 +98,19 @@ function Room1() {
         setTreasureChestIndexes(treasureChestPositions);
     }
 
+    //populates map tiles
     useEffect(() => {
         assignMapTiles();
     }, []);
 
+    //populates squid guys
     useEffect(() => {
         if (squareTiles.length > 0) {
             assignSquidGuys();
         }
     }, [squareTiles]);
 
+    //populates treasure chests
     useEffect(() => {
         if (squareTiles.length > 0) {
             assignTreasureChests();
@@ -109,7 +119,7 @@ function Room1() {
 
     //code for changing Dungeon Man's location on square click
     const handleSquareClick = (index) => {
-        if (!squidGuyIndexes.includes(index)) {
+        if (!squidGuyIndexes.includes(index) && !treasureChestIndexes.includes(index)) {
             setDungeonManIndex(index);
         }
     };
@@ -155,6 +165,7 @@ function Room1() {
                             />
                         )}
 
+                        {/* puts squid guys on the screen */}
                         {squidGuyIndexes.includes(index) && (
                             <img
                                 src='/SquidGuy.png'
@@ -163,6 +174,7 @@ function Room1() {
                             />
                         )}
 
+                        {/* puts treasure chests on the screen */}
                         {treasureChestIndexes.includes(index) && (
                             <img
                                 src='/TreasureChestClosed.png'
