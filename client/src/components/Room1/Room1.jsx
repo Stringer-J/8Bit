@@ -78,7 +78,8 @@ function Room1() {
         squareTiles.forEach((tile, index) => {
             if (tile === '/map-tiles/NormalFloor.png' &&
                 index !== dungeonManIndex &&
-                !squidGuyIndexes.includes(index)) {
+                !squidGuyIndexes.includes(index)
+            ) {
                 normalFloorIndexes.push(index);
             }
         });
@@ -112,10 +113,10 @@ function Room1() {
 
     //populates treasure chests
     useEffect(() => {
-        if (squareTiles.length > 0) {
+        if (squidGuyIndexes.length > 0) {
             assignTreasureChests();
         }
-    }, [squareTiles]);
+    }, [squidGuyIndexes]);
 
     //code for changing Dungeon Man's location on square click
     const handleSquareClick = (index) => {
