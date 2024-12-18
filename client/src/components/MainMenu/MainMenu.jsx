@@ -14,10 +14,7 @@ function MainMenu() {
                     <h1 className='tiny5-regular not-editable-text titleText'>DUNGEON MAN</h1>
                     <h2 className='tiny5-regular not-editable-text subTitleText'>ダンジョンマン</h2>
                     <Link to='/Room1'>
-                        <button className='tiny5-regular newGameButton'>NEW</button>
-                    </Link>
-                    <Link to='/Room1'>
-                        <button className='tiny5-regular continueButton'>CONTINUE</button>
+                        <button className='tiny5-regular newGameButton'>START</button>
                     </Link>
                 </div>
             </div>
