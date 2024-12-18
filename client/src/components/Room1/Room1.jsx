@@ -15,6 +15,7 @@ function Room1() {
     const [squareTiles, setSquareTiles] = useState([]);
 
     const [squidGuyIndexes, setSquidGuyIndexes] = useState([]);
+    const [treasureChestIndexes, setTreasureChestIndexes] = useState([]);
 
     //state for determining what square Dungeon Man is located in
     const [dungeonManIndex, setDungeonManIndex] = useState(60);
@@ -65,6 +66,31 @@ function Room1() {
         setSquidGuyIndexes(squidGuyPositions);
     };
 
+    const assignTreasureChests = () => {
+        let normalFloorIndexes = [];
+        squareTiles.forEach((tile, index) => {
+            if (tile === '/map-tiles/NormalFloor.png' &&
+                index !== dungeonManIndex &&
+                !squidGuyIndexes.includes(index)) {
+                normalFloorIndexes.push(index);
+            }
+        });
+
+        const treasureChestCount = 3;
+        let treasureChestPositions = [];
+
+        while (treasureChestPositions.length < treasureChestCount) {
+            const randomIndex = Math.floor(Math.random() * normalFloorIndexes.length);
+            const selectedIndex = normalFloorIndexes[randomIndex];
+
+            if (!treasureChestPositions.includes(selectedIndex)) {
+                treasureChestPositions.push(selectedIndex);
+            }
+        }
+
+        setTreasureChestIndexes(treasureChestPositions);
+    }
+
     useEffect(() => {
         assignMapTiles();
     }, []);
@@ -72,6 +98,12 @@ function Room1() {
     useEffect(() => {
         if (squareTiles.length > 0) {
             assignSquidGuys();
+        }
+    }, [squareTiles]);
+
+    useEffect(() => {
+        if (squareTiles.length > 0) {
+            assignTreasureChests();
         }
     }, [squareTiles]);
 
@@ -128,6 +160,14 @@ function Room1() {
                                 src='/SquidGuy.png'
                                 alt='SquidGuy'
                                 className='squid-guy-image'
+                            />
+                        )}
+
+                        {treasureChestIndexes.includes(index) && (
+                            <img
+                                src='/TreasureChestClosed.png'
+                                alt='TreasureChestClosed'
+                                className='treasure-chest-image'
                             />
                         )}
                     </div>

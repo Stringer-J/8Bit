@@ -48,3 +48,10 @@
     object-fit: contain;
 }
 
+.treasure-chest-image {
+    position: absolute;
+    width: 100%;
+    height: 95%;
+    object-fit: contain;
+}
+
