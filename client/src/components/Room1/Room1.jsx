@@ -14,6 +14,8 @@ function Room1() {
 
     const [squareTiles, setSquareTiles] = useState([]);
 
+    const [squidGuyIndexes, setSquidGuyIndexes] = useState([]);
+
     //state for determining what square Dungeon Man is located in
     const [dungeonManIndex, setDungeonManIndex] = useState(60);
     //state for determining if the character page is open or not
@@ -40,24 +42,55 @@ function Room1() {
         setSquareTiles(assignedTiles);
     };
 
+    const assignSquidGuys = () => {
+        let normalFloorIndexes = [];
+        squareTiles.forEach((tile, index) => {
+            if (tile === '/map-tiles/NormalFloor.png' && index !== dungeonManIndex) {
+                normalFloorIndexes.push(index);
+            }
+        });
+
+        const squidGuyCount = 5;
+        let squidGuyPositions = [];
+
+        while (squidGuyPositions.length < squidGuyCount) {
+            const randomIndex = Math.floor(Math.random() * normalFloorIndexes.length);
+            const selectedIndex = normalFloorIndexes[randomIndex];
+
+            if (!squidGuyPositions.includes(selectedIndex)) {
+                squidGuyPositions.push(selectedIndex);
+            }
+        }
+
+        setSquidGuyIndexes(squidGuyPositions);
+    };
+
     useEffect(() => {
         assignMapTiles();
     }, []);
 
+    useEffect(() => {
+        if (squareTiles.length > 0) {
+            assignSquidGuys();
+        }
+    }, [squareTiles]);
+
     //code for changing Dungeon Man's location on square click
     const handleSquareClick = (index) => {
-        setDungeonManIndex(index);
-    }
+        if (!squidGuyIndexes.includes(index)) {
+            setDungeonManIndex(index);
+        }
+    };
 
     //code for setting the character page to open when you click Dungeon Man
     const handleCharacterClick = () => {
         setIsCharacterPageOpen(true);
-    }
+    };
 
     //code for close the character page when you click outside of it
     const closeCharacterPage = () => {
         setIsCharacterPageOpen(false);
-    }
+    };
 
     return (
         <>
@@ -87,6 +120,14 @@ function Room1() {
                                 src={squareTiles[index]}
                                 alt={`Map Tile ${index}`}
                                 className='map-tile-image'
+                            />
+                        )}
+
+                        {squidGuyIndexes.includes(index) && (
+                            <img
+                                src='/SquidGuy.png'
+                                alt='SquidGuy'
+                                className='squid-guy-image'
                             />
                         )}
                     </div>
